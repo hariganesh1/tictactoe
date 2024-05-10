@@ -7,6 +7,7 @@
 #include <string>
 
 class Game {
+    
 public:
     // Default Constructor
     Game();

@@ -24,6 +24,7 @@ void Game::play()
     {
         std::cout << "It's Round: " << round << " Here is the current board:\n";
         std::cout << "GameOver?: " << gameOver() << std::endl;
+        
         boardPrint();
         int row;
         int col;

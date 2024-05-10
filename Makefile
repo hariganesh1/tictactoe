@@ -1,5 +1,4 @@
-# Makefile
-# Update for use with SFML later
+# Makefile, update for use with SFML later
 
 CXX ?= g++
 
