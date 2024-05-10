@@ -29,7 +29,7 @@ void Game::play()
         int col;
         std::cout << "It's Player " << currPlayerTurn << "'s Turn, Input where"
                   << " you'd like to place an X in the following format: row"
-                  << " col (eg. 1 1 for the middle)\n";
+                  << " col (eg. 0 1 for top middle)\n";
         std::cin >> row >> col;
         boardUpdate(currPlayerTurn, row, col); // Play move
         ++round;

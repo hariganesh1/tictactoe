@@ -6,7 +6,7 @@ int main(int argc, char **argv)
         Game tictactoe = Game();
         tictactoe.play();
     } else if (argc != 3) { // Incorrect usage
-        std::cout << "Usage: ./main.exe PLAYER_1_NAME PLAYER_2_NAME"
+        std::cout << "Usage: main.exe PLAYER_1_NAME PLAYER_2_NAME"
                   << "EG. ./main.exe BOB JEFF\n";
         return 1;
     }
