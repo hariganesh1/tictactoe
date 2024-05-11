@@ -4,9 +4,10 @@ CXX ?= g++
 
 CXXFLAGS ?= --std=c++17 -fsanitize=address -fsanitize=undefined
 
-tictactoe.exe: tictactoe.cpp
+tictactoe-std.exe: tictactoe-std.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
-main.exe: tictactoe.cpp main.cpp
+
+main-std.exe: tictactoe-std.cpp main-std.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean: 

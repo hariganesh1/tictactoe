@@ -1,35 +1,33 @@
-#include "tictactoe.hpp"
+#include "tictactoe-std.hpp"
 
 Game::Game() {
     player1_name = "Player 1";
     player2_name = "Player 2";
-    round = 1;
+    round = 0;
 };
 
 Game::Game(std::string player1Name_in, std::string player2Name_in) {
         player1_name = player1Name_in;
         player2_name = player2Name_in;
-        round = 1;
+        round = 0;
         placementToPlayer['X'] = 1;
         placementToPlayer['O'] = 2;
-    };
+};
 
 void Game::play()
-{
+{   
+    int currPlayerTurn = 1;
     std::cout << "Welcome to Tic Tac Toe! Input Player 1 and Player 2's name below:\n"
               << "In the following format: ~Name Name~ (Eg. Bob Jeff) --> Player 1: "
               << "Bob, Player 2: Jeff\n";
-    int currPlayerTurn = 1;
     while (!gameOver())
     {
-        std::cout << "It's Round: " << round << " Here is the current board:\n";
-        std::cout << "GameOver?: " << gameOver() << std::endl;
-        
-        boardPrint();
         int row;
         int col;
+        std::cout << "It's Round: " << round + 1 << " Here is the current board:\n";
+        boardPrint();
         std::cout << "It's Player " << currPlayerTurn << "'s Turn, Input where"
-                  << " you'd like to place an X in the following format: row"
+                  << " you'd like to place in the following format: row"
                   << " col (eg. 0 1 for top middle)\n";
         std::cin >> row >> col;
         boardUpdate(currPlayerTurn, row, col); // Play move
@@ -53,12 +51,12 @@ void Game::play()
 void Game::boardPrint()
 {
     std::cout << "-------------\n";
-    for (int i = 0; i < 3; i++)
+    for (int row = 0; row < 3; row++)
     {
         std::cout << "| ";
-        for (int j = 0; j < 3; j++)
+        for (int col = 0; col < 3; col++)
         {
-            std::cout << board[i][j] << " | ";
+            std::cout << board[row][col] << " | ";
         }
         std::cout << "\n-------------\n";
     }
@@ -77,6 +75,13 @@ void Game::boardUpdate(int currentPlayer, int row, int col)
         int col;
         std::cin >> row >> col;
         boardUpdate(currentPlayer, row, col);
+    } else if (row > 2 || col > 2 || row < 0 || col < 0) {
+            std::cout << "Error: 0 <= row, col <= 2. Choose a valid row, col pair "
+                      << "(eg. 0 1 for top middle).\n";
+            int row;
+            int col;
+            std::cin >> row >> col;
+            boardUpdate(currentPlayer, row, col);
     }
     else // Update board accordingly
     {
